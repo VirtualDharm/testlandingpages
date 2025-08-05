@@ -5,12 +5,21 @@ import SolarEMSaving from "./SolarEMSaving";
 import LetsDiscussHubspot from "../LetsDiscussHubspot";
 import TalkTechnicalHubspot from "../TalkTechnicalExpert";
 
-const CTASection = ({ onOpenModal }) => {
+const CTASection = ({ onOpenModal, locationData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false); // HubSpot form modal
   const [showSolarEMSaving, setShowSolarEMSaving] = useState(false); // SolarEMSaving modal
   const [formKey, setFormKey] = useState(0); // Key to force remount of LetsDiscussHubspot
   const [showExpertModal, setShowExpertModal] = useState(false);
+  
+  // Personalization Logic
+  const headline = locationData?.company
+    ? `Ready to Transform Energy Management at ${locationData.company}?`
+    : "Ready to Transform Your Energy Management?";
 
+  const ctaText = locationData?.isBusiness
+    ? "Get My Company's Savings Report"
+    : "Calculate My Solar Savings Now";
+    
   const openModal = () => {
     setIsModalOpen(true);
     setFormKey((prev) => prev + 1); // Increment key to force remount
@@ -82,7 +91,7 @@ const CTASection = ({ onOpenModal }) => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
         <div className="space-y-8 animate-slide-up">
           <h2 className="text-4xl md:text-6xl font-sans font-bold text-white mb-6">
-            Ready to Transform Your Energy Management?
+            {headline}
           </h2>
 
           <div className="flex justify-center mb-8">
@@ -116,7 +125,7 @@ const CTASection = ({ onOpenModal }) => {
                 ))}
               </div>
               <span className="relative z-10 font-sans flex items-center">
-                Calculate My Solar Savings Now
+                {ctaText}
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
             </button>

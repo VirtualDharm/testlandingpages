@@ -10,7 +10,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-const FeaturesSection = () => {
+const FeaturesSection = ({ locationData }) => {
   const features = [
     {
       icon: Settings,
@@ -62,6 +62,11 @@ const FeaturesSection = () => {
     },
   ];
 
+  // Personalization Logic
+  const headline = locationData?.country 
+    ? `An Integrated Solar Solution for ${locationData.country}` 
+    : "What is SAS SEMS?";
+
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       {/* Enhanced Background Pattern */}
@@ -96,7 +101,7 @@ const FeaturesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative ">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-sans font-bold mb-6 animate-slide-up">
-            <span className="text-[#54B848]">What is SAS SEMS?</span>
+            <span className="text-[#54B848]">{headline}</span>
           </h2>
           <div className="flex justify-center mb-6">
             <div className="w-24 h-1 bg-[#002D8F] rounded-full" />

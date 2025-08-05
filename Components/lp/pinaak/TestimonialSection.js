@@ -1,13 +1,14 @@
 import React from "react";
 import { Star } from "lucide-react";
 
-const TestimonialsSection = () => {
-  const testimonials = [
+const TestimonialsSection = ({ locationData }) => {
+  const allTestimonials = [
     {
       quote:
         "After integrating SAS SEMS with our 50KW rooftop solar setup, we saw a 22% reduction in energy costs and eliminated downtime from power surges completely.",
       author: "Rajesh Kumar",
       company: "Manufacturing Plant Manager",
+      location: "India", // <-- Added location
       metrics: [
         { label: "Cost Reduction", value: "22%" },
         { label: "Downtime", value: "0%" },
@@ -16,9 +17,10 @@ const TestimonialsSection = () => {
     },
     {
       quote:
-        "The AI-predictive insights helped us cut unnecessary grid draw during peak hours and extend our battery backup life significantly.",
+        "The AI-predictive insights helped us cut unnecessary grid draw during peak hours and extend our battery backup life significantly. A top choice for the USA.",
       author: "Dr. Priya Sharma",
       company: "University Facility Head",
+      location: "United States", // <-- Added location
       metrics: [
         { label: "Peak Hour Savings", value: "35%" },
         { label: "Battery Life", value: "+40%" },
@@ -26,6 +28,18 @@ const TestimonialsSection = () => {
       ],
     },
   ];
+
+  // Personalization Logic: Sort testimonials based on location
+  const sortedTestimonials = React.useMemo(() => {
+    if (!locationData?.country) {
+      return allTestimonials;
+    }
+    return [...allTestimonials].sort((a, b) => {
+      if (a.location === locationData.country) return -1; // 'a' comes first
+      if (b.location === locationData.country) return 1;  // 'b' comes first
+      return 0; // No change in order
+    });
+  }, [locationData]);
 
   return (
     <section
@@ -81,7 +95,8 @@ const TestimonialsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {testimonials.map((testimonial, index) => (
+          {/* Use the sortedTestimonials array for mapping */}
+          {sortedTestimonials.map((testimonial, index) => (
             <div
               key={index}
               className="group relative p-8 bg-white/80 backdrop-blur-sm rounded-3xl border border-slate-200/50 hover:border-teal-300/50 transition-all duration-500 hover:shadow-2xl transform hover:-translate-y-2 animate-slide-up"

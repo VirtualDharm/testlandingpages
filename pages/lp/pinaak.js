@@ -16,9 +16,11 @@ import Highlights from "@/Components/lp/pinaak/Highlights";
 import SolarProblemsSolution from "@/Components/lp/pinaak/SolarPowerProblems";
 import FloatingQuoteButton from "@/Components/lp/pinaak/FloatingQuoteButton";
 import FloatingContactButtons from "@/Components/lp/FloatingContact";
+import useLocationData from "@/Components/lp/pinaak/useLocationData"; // Import the custom hook
 
 export default function PinaakPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { locationData, loading } = useLocationData(); // Use the hook here
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -140,17 +142,18 @@ export default function PinaakPage() {
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
         <Navigation onOpenModal={openModal} />
-        <HeroSection onOpenModal={openModal} />
-        <FeaturesSection />
-        <SolarProblemsSolution/>
-        <Highlights/>
-        <AISection />
-        {/* <IndustriesSection /> */}
-        <TestimonialsSection />
-        <FloatingContactButtons/>
-        <AboutSection />
-        <FloatingQuoteButton/>
-        <CTASection onOpenModal={openModal} />
+        {/* Pass locationData to the components that need it */}
+        <HeroSection onOpenModal={openModal} locationData={locationData} />
+        <FeaturesSection locationData={locationData} />
+        <SolarProblemsSolution locationData={locationData} />
+        <Highlights locationData={locationData} />
+        <AISection locationData={locationData} />
+        {/* <IndustriesSection locationData={locationData}  /> */}
+        <TestimonialsSection locationData={locationData} />
+        <FloatingContactButtons />
+        <AboutSection locationData={locationData} />
+        <FloatingQuoteButton locationData={locationData} />
+        <CTASection onOpenModal={openModal} locationData={locationData} />
         <PinaakFooter />
       </div>
     </div>
