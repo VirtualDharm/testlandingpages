@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+.border-gradient {
+  border-style: solid;
+  border-image: linear-gradient(to top, #f1b500, #e33e2b, #3a7cec);
+  border-image-slice: 1;
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px); /* Adjust the distance of movement as needed */
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-slideRight {
+  animation: slideRight 1s infinite; /* Adjust the duration as needed */
+}
+
+div,
+p {
+  font-family: "Charter", serif;
+}
+.paragraph a {
+  @apply font-semibold text-inherit;
+}
+
+.paragraph a:hover {
+  @apply text-blue-600;
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+.seventh-image {
+  grid-column: 1 / -1; /* Span both columns */
+  justify-self: center; /* Center horizontally */
+}
+
+/* Small screens and above: Place the 7th image in the second column and center it */
+@media (min-width: 640px) {
+  .seventh-image {
+    grid-column: 2 / 3; /* Place in the second column */
+    justify-self: center; /* Center within the column */
+    grid-row: auto; /* Ensure it stays in its natural row */
+  }
+}
+
+@layer base {
+  body {
+    @apply antialiased text-gray-900;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-medium tracking-tight;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .bg-navy-900 {
+    background-color: #0f172a;
+  }
+}
