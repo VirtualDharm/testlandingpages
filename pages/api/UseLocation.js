@@ -11,8 +11,6 @@ export default async function handler(req, res) {
     
     // Log request data (existing - keeping all your logs)
     console.log("req.headers", req.headers);
-    console.log("req.socket", req.socket);
-    console.log("req.connection", req.connection);
     console.log("req.ip", req.ip);
     console.log("req.body", req.body);
     console.log("req.query", req.query);
@@ -58,8 +56,6 @@ export default async function handler(req, res) {
         true_client_ip: req.headers['true-client-ip'],
         
         // Direct connection
-        socket_remote_address: req.socket?.remoteAddress,
-        connection_remote_address: req.connection?.remoteAddress,
         req_ip: req.ip,
         
         // Additional
@@ -108,8 +104,6 @@ export default async function handler(req, res) {
       // 4. Direct connection (fallback)
       if (!detectedIP) {
         const directSources = [
-          { source: req.socket?.remoteAddress, method: 'socket' },
-          { source: req.connection?.remoteAddress, method: 'connection' },
           { source: req.ip, method: 'req.ip' },
         ];
 
@@ -156,9 +150,7 @@ export default async function handler(req, res) {
     // Your existing fallback logic (keeping it)
     if (!clientIp) {
       clientIp = req.headers['x-forwarded-for'] || 
-                 req.headers['x-real-ip'] || 
-                 req.socket.remoteAddress || 
-                 req.connection.remoteAddress;
+                 req.headers['x-real-ip']
 
       // Handle comma-separated IPs (proxies)
       if (clientIp && typeof clientIp === 'string') {
@@ -225,14 +217,6 @@ export default async function handler(req, res) {
         // All headers for debugging (NEW)
         allHeaders: req.headers,
         
-        // Connection info (NEW)
-        connectionInfo: {
-          remoteAddress: req.socket?.remoteAddress,
-          remotePort: req.socket?.remotePort,
-          localAddress: req.socket?.localAddress,
-          localPort: req.socket?.localPort,
-          remoteFamily: req.socket?.remoteFamily,
-        },
       };
 
       res.status(200).json(clientData);
