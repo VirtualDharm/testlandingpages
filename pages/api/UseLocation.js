@@ -137,7 +137,7 @@ export default async function handler(req, res) {
         ip: detectedIP,
         method: detectionMethod,
         allSources: allIPSources,
-        platform: { isVercel, isNetlify, isCloudflare },
+        platform: { isVercel },
         vercelIP: isVercel ? (req.headers['x-forwarded-for'] || req.headers['x-real-ip']) : null,
       };
     };
@@ -230,8 +230,6 @@ export default async function handler(req, res) {
         allIPSources: ipDetection.allSources,
         vercelIP: ipDetection.vercelIP,
         isVercel: ipDetection.platform.isVercel,
-        isNetlify: ipDetection.platform.isNetlify,
-        isCloudflare: ipDetection.platform.isCloudflare,
         platform: ipDetection.platform,
 
         // All headers for debugging (NEW)
