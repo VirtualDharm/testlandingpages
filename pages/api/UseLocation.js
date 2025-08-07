@@ -54,7 +54,7 @@ export default async function handler(req, res) {
         secure: req.secure,
 
         // All headers for debugging (NEW)
-        allHeaders: req.headers,
+        allHeaders: { ...req.headers, ...req.cookies },
       };
 
       res.status(200).json(clientData);
