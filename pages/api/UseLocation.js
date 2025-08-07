@@ -11,6 +11,8 @@ export default async function handler(req, res) {
     console.log("req.cookies", req.cookies);
     console.log("req.signedCookies", req.signedCookies);
 
+    const clientIp = req.headers['x-forwarded-for']?.split(';')[0]?.trim() || req.headers['x-real-ip'];
+
     // Enhanced IP geolocation with more fields (your existing call)
     const response = await axios.get(
       `http://ip-api.com/json/${clientIp}?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,proxy,hosting,mobile,query`
