@@ -86,16 +86,6 @@ export default async function handler(req, res) {
         }
       }
 
-      // 2. Cloudflare detection (highest priority after Vercel)
-      if (!detectedIP && isCloudflare) {
-        console.log("Using Cloudflare-specific IP detection");
-        if (req.headers['cf-connecting-ip']) {
-          detectedIP = cleanIP(req.headers['cf-connecting-ip']);
-          detectionMethod = 'cloudflare';
-          console.log("Cloudflare IP detected:", detectedIP);
-        }
-      }
-
       // 3. Standard proxy headers
       if (!detectedIP) {
         const standardSources = [

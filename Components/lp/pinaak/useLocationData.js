@@ -206,8 +206,6 @@ const useLocationData = () => {
             // Platform detection
             platform: data.platform,
             isVercel: data.isVercel,
-            isNetlify: data.isNetlify,
-            isCloudflare: data.isCloudflare,
             
             // Additional headers
             allHeaders: data.allHeaders,
