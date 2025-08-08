@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import React from "react";
 
-const SolarProblemsSolution = () => {
+const SolarProblemsSolution = ({ locationData }) => {
   const handleCalendly=()=>{
     window.open("https://calendly.com/swapnil-sasone/let-s-discuss-your-project","_blank")
   }
@@ -27,6 +27,12 @@ const SolarProblemsSolution = () => {
     { value: "40%", label: "Lower Maintenance Costs" },
     { value: "90%+", label: "Prediction Accuracy" },
   ];
+
+  // --- Personalization Logic ---
+  console.log('locationData ',locationData)
+  const locationText = locationData?.city ? `in ${locationData.city}` : (locationData?.country ? `in ${locationData.country}` : "");
+  const headline = `Stop Losing Money on Underperforming Solar Systems ${locationText}`;
+  // --- End Personalization ---
 
   return (
     <section className="py-12 px-4 bg-white text-white font-sans">
@@ -53,7 +59,7 @@ const SolarProblemsSolution = () => {
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-sans font-bold mb-6 animate-slide-up">
             <span className="text-[#54B848]">
-              Stop Losing Money on Underperforming Solar Systems
+              {headline}
             </span>
           </h2>
           <div className="flex justify-center  mb-6">

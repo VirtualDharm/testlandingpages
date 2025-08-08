@@ -8,8 +8,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import TalkTechnicalHubspot from "../TalkTechnicalExpert";
-
-const AboutSection = () => {
+const AboutSection = ({ locationData }) => {
   const [showExpertModal, setShowExpertModal] = useState(false);
   const points = [
     {
@@ -61,6 +60,12 @@ const AboutSection = () => {
       icon: Cpu,
     },
   ];
+
+  // --- Personalization Logic ---
+  const ctaText = locationData?.isBusiness 
+    ? "Discuss a Solution for Your Team" 
+    : "Let's Get Started";
+  // --- End Personalization ---
 
   return (
     <section id="about" className="py-24 bg-white relative overflow-hidden">
@@ -200,9 +205,8 @@ const AboutSection = () => {
                 onClick={() => setShowExpertModal(true)}
                 className="group relative px-10 py-5 border-2 border-[#54B848] text-black hover:text-white rounded-2xl font-semibold text-lg hover:border-[#54B848] hover:bg-[#54B848] transition-all duration-300 backdrop-blur-sm transform hover:scale-105"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-black/0 to-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
                 <span className="relative flex items-center font-sans">
-                  Let's Get Started
+                  {ctaText}
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
               </button>

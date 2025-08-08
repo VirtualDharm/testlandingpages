@@ -21,11 +21,12 @@ import useLocationData from "@/Components/lp/pinaak/useLocationData"; // Import 
 export default function PinaakPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { locationData, loading } = useLocationData(); // Use the hook here
+  console.log('locationData1 : ',locationData)
 
   const openModal = () => {
     setIsModalOpen(true);
   };
-
+  
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -141,8 +142,7 @@ export default function PinaakPage() {
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-        <Navigation onOpenModal={openModal} />
-        {/* Pass locationData to the components that need it */}
+        <Navigation onOpenModal={openModal} locationData={locationData} />
         <HeroSection onOpenModal={openModal} locationData={locationData} />
         <FeaturesSection locationData={locationData} />
         <SolarProblemsSolution locationData={locationData} />
@@ -154,7 +154,7 @@ export default function PinaakPage() {
         <AboutSection locationData={locationData} />
         <FloatingQuoteButton locationData={locationData} />
         <CTASection onOpenModal={openModal} locationData={locationData} />
-        <PinaakFooter />
+        <PinaakFooter locationData={locationData} />
       </div>
     </div>
   );

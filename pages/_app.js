@@ -65,7 +65,7 @@ export default function App({ Component, pageProps }) {
     </div>
   );
 }
-  console.log('version 0.3')
+  console.log('version 0.4')
   return (
     <>
       {/* Main Component */}

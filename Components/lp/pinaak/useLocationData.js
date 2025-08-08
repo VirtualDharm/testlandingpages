@@ -50,16 +50,6 @@ const useLocationData = () => {
             isHosting: data.hosting,
             isMobile: data.mobile,
             
-            // Enhanced IP detection data
-            serverDetectedIP: data.serverDetectedIP,
-            vercelIP: data.vercelIP,
-            allIPSources: data.allIPSources,
-            detectionMethod: data.detectionMethod,
-            
-            // Platform detection
-            platform: data.platform,
-            isVercel: data.isVercel,
-            
             // Additional headers
             allHeaders: data.allHeaders,
             connectionInfo: data.connectionInfo,

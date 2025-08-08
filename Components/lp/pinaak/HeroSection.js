@@ -27,15 +27,15 @@ const HeroSection = ({ locationData }) => {
     setIsModalOpen(false); // Close HubSpot form modal
     setShowSolarEMSaving(true); // Open SolarEMSaving modal
   };
-  
+
   // Personalization Logic
   const subtitle = locationData?.company
     ? `The Smart AI-Driven Platform for ${locationData.company}`
     : locationData?.country
     ? `The Smart AI-Driven Platform in ${locationData.country}`
-    : "The Smart AI-Driven Platform";
-    
-  const ctaText = locationData?.company
+    : `Maximize Your Solar ROI, Minimize Wastage & Downtime with Our Smart AI-Driven Platform`;
+
+  const ctaText = locationData?.isBusiness
     ? `Calculate Savings for ${locationData.company}`
     : "Calculate My Solar Savings Now";
 
@@ -138,9 +138,7 @@ const HeroSection = ({ locationData }) => {
               style={{ animationDelay: "0.4s" }}
             >
               <p className="text-2xl md:text-3xl font-sans text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                Maximize Your Solar ROI, Minimize Wastage & Downtime with Our
                 <span className="text-[#54B848] font-semibold">
-                  {" "}
                   {subtitle}
                 </span>
               </p>
