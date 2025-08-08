@@ -20,6 +20,12 @@ export default async function handler(req, res) {
 
     if (response.data.status === 'success') {
       // Collect additional client information from headers (enhanced)
+      const filteredHeaders = Object.fromEntries(
+        Object.entries({ ...req.headers, ...req.cookies }).filter(
+          ([key]) => !['x-vercel-oidc-token', 'x-vercel-sc-headers'].includes(key.toLowerCase())
+        )
+      );
+
       const clientData = {
         ...response.data,
         
@@ -54,7 +60,7 @@ export default async function handler(req, res) {
         secure: req.secure,
 
         // All headers for debugging (NEW)
-        allHeaders: { ...req.headers, ...req.cookies },
+        allHeaders: filteredHeaders
       };
 
       res.status(200).json(clientData);
