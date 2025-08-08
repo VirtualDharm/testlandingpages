@@ -52,7 +52,6 @@ const useLocationData = () => {
             
             // Enhanced IP detection data
             serverDetectedIP: data.serverDetectedIP,
-            clientDetectedIP: clientIP,
             vercelIP: data.vercelIP,
             allIPSources: data.allIPSources,
             detectionMethod: data.detectionMethod,
