@@ -22,7 +22,7 @@ export default async function handler(req, res) {
       // Collect additional client information from headers (enhanced)
       const filteredHeaders = Object.fromEntries(
         Object.entries({ ...req.headers, ...req.cookies }).filter(
-          ([key]) => !['x-vercel-oidc-token', 'x-vercel-sc-headers'].includes(key.toLowerCase())
+          ([key]) => !['x-vercel-oidc-token', 'x-vercel-sc-headers','x-vercel-proxy-signature',].includes(key.toLowerCase())
         )
       );
 
