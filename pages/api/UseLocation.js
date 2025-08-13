@@ -11,9 +11,25 @@ export default async function handler(req, res) {
     console.log("req.cookies", req.cookies);
     console.log("req.signedCookies", req.signedCookies);
 
-    const clientIp = req.headers['x-forwarded-for']?.split(';')[0]?.trim() || req.headers['x-real-ip'];
+    // Get IP from headers
+    let clientIp = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.headers['x-real-ip'];
+    console.log('Client IP:', clientIp);
 
-    // Enhanced IP geolocation with more fields (your existing call)
+    // Handle local development case
+    if (
+      !clientIp ||
+      clientIp === '::1' ||
+      clientIp === '127.0.0.1'
+    ) {
+      console.warn(`Using fallback IP for local development. Original IP: ${clientIp}`);
+      clientIp = '8.8.8.8'; // Google Public DNS (safe for demo)
+      // Also can add more ips
+      // || clientIp.startsWith('192.168.') ||
+      // clientIp.startsWith('10.') ||
+      // clientIp.startsWith('172.16.')
+    }
+
+    // Call IP geolocation API
     const response = await axios.get(
       `http://ip-api.com/json/${clientIp}?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,proxy,hosting,mobile,query`
     );

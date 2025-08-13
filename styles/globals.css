@@ -102,3 +102,230 @@ p {
     background-color: #0f172a;
   }
 }
+
+
+/* Adding custom css */
+
+/* src/BRDHubspotForm.css */
+
+/* --- General Styles --- */
+.brd-form-body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f5faff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+/* --- Main Container --- */
+.configurator-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 800px;
+  padding: 30px 40px;
+  box-sizing: border-box;
+  margin: 20px;
+}
+
+.cf-header h2 {
+  font-size: 24px;
+  color: #1a2b4d;
+  margin-top: 0;
+}
+
+.cf-header p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* --- Progress Bar --- */
+.cf-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.cf-step {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  position: relative;
+}
+
+.cf-step.active {
+  background-color: #007bff;
+}
+
+.cf-step.completed {
+  background-color: #28a745;
+}
+
+.cf-step.completed::after {
+  content: '✔';
+  color: white;
+  font-size: 16px;
+}
+
+.cf-step-dash {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #e0e0e0;
+  margin: 0 5px;
+  max-width: 50px;
+}
+
+/* --- Slides & Form Elements --- */
+.cf-slide {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.items-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.input-label:hover {
+  background-color: #f7f7f7;
+}
+
+.input-label input {
+  display: none;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  margin-right: 12px;
+  flex-shrink: 0;
+  position: relative;
+  background-color: #fff;
+}
+
+.checkmark.radio {
+  border-radius: 50%;
+}
+
+.checkmark.checkbox {
+  border-radius: 3px;
+}
+
+.input-label input:checked + .checkmark.radio::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #007bff;
+}
+
+.input-label input:checked + .checkmark.checkbox::after {
+  content: '✔';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #007bff;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.input-label.selected {
+   background-color: #e7f1ff;
+   border-color: #007bff;
+}
+
+.input-label.selected .cf-item-label-text {
+  font-weight: 600;
+}
+
+/* --- Action Buttons --- */
+.cf-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.cf-btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.cf-btn:active {
+  transform: translateY(1px);
+}
+
+.cf-back-btn {
+  background-color: #f0f0f0;
+  color: #555;
+  margin-right: 10px;
+}
+
+.cf-next-btn, .cf-submit-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.d-none {
+  display: none;
+}
+
+/* --- Final Screen --- */
+.cf-result {
+  text-align: center;
+  animation: fadeIn 0.5s;
+}
+.cf-result-title {
+  font-size: 22px;
+  color: #28a745;
+  margin-bottom: 10px;
+}

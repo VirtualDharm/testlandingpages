@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-
+import BRDHubspotForm from "@/Components/lp/pinaak/BRDHubspotForm";
 import AboutSection from "@/Components/lp/pinaak/AboutSection";
 import AISection from "@/Components/lp/pinaak/AISection";
 import CTASection from "@/Components/lp/pinaak/CTASection";
@@ -142,6 +142,7 @@ export default function PinaakPage() {
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+        {/* <BRDHubspotForm /> */}
         <Navigation onOpenModal={openModal} locationData={locationData} />
         <HeroSection onOpenModal={openModal} locationData={locationData} />
         <FeaturesSection locationData={locationData} />
@@ -152,7 +153,7 @@ export default function PinaakPage() {
         <TestimonialsSection locationData={locationData} />
         <FloatingContactButtons />
         <AboutSection locationData={locationData} />
-        <FloatingQuoteButton locationData={locationData} />
+        {/* <FloatingQuoteButton locationData={locationData} /> */}
         <CTASection onOpenModal={openModal} locationData={locationData} />
         <PinaakFooter locationData={locationData} />
       </div>
