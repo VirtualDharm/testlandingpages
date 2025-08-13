@@ -29,7 +29,7 @@ const SolarProblemsSolution = ({ locationData }) => {
   ];
 
   // --- Personalization Logic ---
-  console.log('locationData ',locationData)
+  // console.log('locationData ',locationData)
   const locationText = locationData?.city ? `in ${locationData.city}` : (locationData?.country ? `in ${locationData.country}` : "");
   const headline = `Stop Losing Money on Underperforming Solar Systems ${locationText}`;
   // --- End Personalization ---
