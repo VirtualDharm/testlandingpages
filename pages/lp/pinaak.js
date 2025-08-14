@@ -173,6 +173,10 @@ export default function PinaakPage() {
         >
           {`
             console.log('Hello from PinaakPage!');
+            console.log('Hello from PinaakPage1!');
+            console.log('Hello from PinaakPage2!');
+            console.log('Hello from PinaakPage3!');
+            console.log('Hello from PinaakPage4!');
           `}
         </Script>
         <Script
