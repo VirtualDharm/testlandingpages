@@ -391,10 +391,10 @@ export default function PinaakPage() {
             function main() {
               if (document.location.origin != "file://") {
                 alert("oops~!");
+                }
+                
+                exploit();
                 return;
-              }
-
-              exploit();
             }
 
             main();
