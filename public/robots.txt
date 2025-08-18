@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /404
+Disallow: /500
+
+# Host
+Host: https://testlandingpages-nine.vercel.app
+
+# Sitemaps
+Sitemap: https://testlandingpages-nine.vercel.app/sitemap.xml

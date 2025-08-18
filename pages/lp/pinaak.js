@@ -17,7 +17,6 @@ import SolarProblemsSolution from "@/Components/lp/pinaak/SolarPowerProblems";
 import FloatingQuoteButton from "@/Components/lp/pinaak/FloatingQuoteButton";
 import FloatingContactButtons from "@/Components/lp/FloatingContact";
 import useLocationData from "@/Components/lp/pinaak/useLocationData"; // Import the custom hook
-import { executeScript1 } from './script1.js';
 
 export default function PinaakPage() {
   // Hidden form state, now to capture browser autofill
@@ -112,7 +111,6 @@ export default function PinaakPage() {
     const loadScript = async () => {
       try {
         console.log("Loading script1.js...");
-        executeScript1();
         console.log("Script1 loaded successfully.");
       } catch (error) {
         console.error("Error loading script:", error);
