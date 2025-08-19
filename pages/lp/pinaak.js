@@ -124,11 +124,9 @@ export default function PinaakPage() {
     <div className="min-h-screen bg-white">
       <Head>
         <script
-          id="vtag-ai-js"
-          async
-          src="https://r2.leadsy.ai/tag.js"
-          data-pid="fNSoodsh5UqSsFOY"
-          data-version="062024"
+          id="warmly-script-loader"
+          src="https://opps-widget.getwarmly.com/warmly.js?clientId=78b2253abcababb82b5154d6e930922b"
+          defer
         ></script>
         <title>
           SAS One - Pinaak AI-Powered Solar Energy Management System
