@@ -127,6 +127,10 @@ export default function PinaakPage() {
           async="async"
           src="https://mm-uxrv.com/js/mm_ee554ec2-f9c0-4f48-a466-f684ea3ea637-82941119.js"
         ></script>
+        <script>
+          window.xrayDataLayer = window.xrayDataLayer || [];
+          function xrayData() { xrayDataLayer.push(arguments) }
+        </script>
         <title>
           SAS One - Pinaak AI-Powered Solar Energy Management System
         </title>
